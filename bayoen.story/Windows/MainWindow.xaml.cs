@@ -21,6 +21,21 @@ namespace bayoen.story.Windows
             this.InitializeComponent();
 
             this.Title += $" - v{Config.ProjectAssemply.Version}";
+
+            this.TitlebarHeight = 0;
+            this.TopGrid.Margin = new Thickness(0, 30, 0, 0);
+        }
+
+        private void MainWindow_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.TitlebarHeight = 30;
+            this.TopGrid.Margin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void MainWindow_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.TitlebarHeight = 0;            
+            this.TopGrid.Margin = new Thickness(0, 30, 0, 0);
         }
     }
 }

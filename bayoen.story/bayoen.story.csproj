@@ -76,8 +76,10 @@
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="MainWorker.cs" />
+    <Compile Include="StoryStatus.cs" />
     <Compile Include="TrayIcon.cs" />
     <Compile Include="Windows\BaseWindow.cs" />
+    <Compile Include="Windows\Clock.cs" />
     <Compile Include="Windows\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -144,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dailycarbuncle_longcarb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\score2_fit_strong.png" />
   </ItemGroup>
   <Import Project="..\..\bayoen-lib\bayoen-lib.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,9 +5,43 @@
         
                     Title="bayoen-story"
                     
-                    AllowDrop="True"
-                    Height="500" Width="600">
-    <Grid>
-        <TextBlock x:Name="TextOut" FontSize="20" Margin="5"/>
+                    Background="Magenta"
+                    Height="500"
+                    Width="406" MinWidth="406" MaxWidth="406"
+                    NonActiveWindowTitleBrush="Transparent"
+                    BorderThickness="0"
+                    
+                    MouseEnter="MainWindow_MouseEnter"
+                    MouseLeave="MainWindow_MouseLeave">
+    <Grid x:Name="TopGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding Height, ElementName=Clock}"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <windows:Clock x:Name="Clock" Grid.Row="0"
+                       Time="0"
+                       Margin="0,15,0,0"/>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Vertical"
+                    Background="Black"
+                    Margin="10">
+            <TextBlock x:Name="StatusBlock"
+                       FontSize="32" FontWeight="Bold" FontFamily="Arial"
+                       Margin="0,5"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock x:Name="StageBlock"
+                       FontSize="32" FontWeight="Bold" FontFamily="Arial"
+                       HorizontalAlignment="Center"/>
+
+            <ListView x:Name="ListBox"
+                      BorderThickness="0"
+                      Background="DarkGray"
+                      Margin="0,5">
+                
+            </ListView>
+        </StackPanel>        
     </Grid>
 </windows:BaseWindow>

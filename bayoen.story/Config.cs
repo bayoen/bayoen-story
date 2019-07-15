@@ -9,6 +9,7 @@ namespace bayoen.story
 {
     public class Config
     {
+        public static readonly string ProjectName = "bayoen-star";
         public static readonly string PPTName = "puyopuyotetris";
         public static readonly AssemblyName ProjectAssemply = Assembly.GetExecutingAssembly().GetName();
         public static readonly TimeSpan MainTimeSpan = new TimeSpan(0, 0, 0, 0, 5); // 5 ms

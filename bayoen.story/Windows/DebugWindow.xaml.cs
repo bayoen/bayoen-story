@@ -20,7 +20,7 @@ namespace bayoen.story.Windows
         {
             this.InitializeComponent();
 
-            this.Title += $" - {Config.ProjectAssemply.Name}";
+            this.Title += $" - {Config.ProjectName}";
         }
     }
 }

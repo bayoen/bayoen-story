@@ -5,7 +5,7 @@
                                        
                     Title="Debug"                    
                     
-                    Height="650" Width="600">
+                    Height="700" Width="700">
 
     <windows:BaseWindow.Resources>
         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MetroTextBlock}">

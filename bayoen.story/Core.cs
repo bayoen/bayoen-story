@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 using bayoen.Library.Utilities;
@@ -33,13 +34,18 @@ namespace bayoen.story
 #if DEBUG
             Core.DebugWindow.Show();
 #endif
-            Core.MainWorker.Start();
+            Core.MainWorker.Run();
         }
 
         public static void Show()
         {
             Core.MainWindow.Show();
             Core.MainWindow.Activate();
+        }
+
+        public static void SetChromaKey(Brush brush)
+        {
+            Core.MainWindow.Background = brush;
         }
 
 #if DEBUG
@@ -50,31 +56,62 @@ namespace bayoen.story
         }
 #endif
 
-        public static void Start()
-        {
-
-        }
-
         public static void Reset()
-        {
-            Core.MainWorker.ResetAdvanture();
+        {            
+            Core.MainWorker.ResetAdvanture();            
         }
 
-        public static void Unlock()
-        {
-            Core.MainWorker.UnlockAdvanture();
-        }
+        //public static void Unlock()
+        //{
+        //    Core.MainWorker.UnlockAdvanture();
+        //}
 
-        public static void Save()
-        {
+        //public static void Save()
+        //{
 
-        }
+        //}
 
         public static void Terminate()
         {
             Core.TrayIcon.Terminate();
-            Core.Save();
+            //Core.Save();
             Environment.Exit(0);
+        }
+
+        private static StoryStatus _status;
+        public static StoryStatus Status
+        {
+            get => _status;
+            set
+            {
+                if (_status == value) return;
+
+                string status = "";
+
+                switch (value)
+                {
+                    case StoryStatus.Broken:
+                        status = "Broken!: Try 'Reset' in title";
+                        break;
+                    case StoryStatus.Missing:
+                        status = "Missing!: Puyo Puyo Tetris Off";
+                        break;
+                    case StoryStatus.Ready:
+                        status = "Ready";
+                        break;
+                    case StoryStatus.Recording:
+                        status = "Recording!";
+                        break;
+                    default:
+                        throw new InvalidOperationException("Wrong status is placed");
+                }
+
+                Core.MainWindow.StatusBlock.Foreground = (value >= StoryStatus.Broken) ? Brushes.Yellow : Brushes.White;
+                Core.MainWindow.StatusBlock.FontSize = (value >= StoryStatus.Broken) ? 24 : 32;
+                Core.MainWindow.StatusBlock.Text = status;
+
+                _status = value;
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace bayoen.story
 {
@@ -15,7 +16,7 @@ namespace bayoen.story
             {
                 ContextMenu = new ContextMenu(),
                 Icon = bayoen.story.Properties.Resources.longcarbIcon,
-                Text = Config.ProjectAssemply.Name,
+                Text = Config.ProjectName,
             };
 
             this.NotifyIcon.MouseDoubleClick += (sender, e) => Core.Show();
@@ -30,17 +31,15 @@ namespace bayoen.story
 #else
             this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("Show", (sender, e) => Core.Show()));
 #endif
-            //this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("Settings", (sender, e) => Core.ShowSetting()));
 
-            //            MenuItem AdvancedMenuItem = new MenuItem("Advanced");
-            //            AdvancedMenuItem.MenuItems.Add(new MenuItem("Restart", (sender, e) => Core.Restart(RestartingModes.RestartOnly)));
-            //            AdvancedMenuItem.MenuItems.Add(new MenuItem("Folder", (sender, e) => Core.Folder()));
-            //#if DEBUG
-            //            AdvancedMenuItem.MenuItems.Add(new MenuItem("Debug", (sender, e) => Core.ShowDebug()));
-            //#endif
-            //            this.NotifyIcon.ContextMenu.MenuItems.Add(AdvancedMenuItem);
             this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("Reset", (sender, e) => Core.Reset()));
-            this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("Unlock", (sender, e) => Core.Unlock()));
+
+            MenuItem ChromaKeyItem = new MenuItem("Chroma Key", (sender, e) => Core.Show());
+            ChromaKeyItem.MenuItems.Add(new MenuItem("Magenta", (sender, e) => Core.SetChromaKey(Brushes.Magenta)));
+            ChromaKeyItem.MenuItems.Add(new MenuItem("Green", (sender, e) => Core.SetChromaKey(Brushes.Green)));
+            this.NotifyIcon.ContextMenu.MenuItems.Add(ChromaKeyItem);
+            
+            //this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("Unlock", (sender, e) => Core.Unlock()));
             this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("-"));
             this.NotifyIcon.ContextMenu.MenuItems.Add(new MenuItem("Exit", (sender, e) => Core.Terminate()));
 
