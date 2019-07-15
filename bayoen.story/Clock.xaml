@@ -1,0 +1,31 @@
+﻿<Grid x:Class="bayoen.story.Clock"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      
+      Margin="0,30,0,0">
+
+    <Grid.Resources>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MetroTextBlock}">
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+    </Grid.Resources>
+
+    <Image x:Name="PanelImage"
+           Height="68" Width="406"
+           Margin="0"
+           VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+    <TextBlock x:Name="MainBlock"
+               FontSize="40" FontWeight="ExtraBold"
+               Margin="0,0,30,0"
+               VerticalAlignment="Center" HorizontalAlignment="Center">
+        00 : 00 : 00.0
+    </TextBlock>
+
+    <TextBlock x:Name="MilliBlock"
+               FontSize="40" FontWeight="ExtraBold"
+               Margin="285,8,0,0"
+               VerticalAlignment="Center" HorizontalAlignment="Center">
+        00
+    </TextBlock>
+</Grid>

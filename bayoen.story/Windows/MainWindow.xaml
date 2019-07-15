@@ -1,0 +1,13 @@
+﻿<windows:BaseWindow x:Class="bayoen.story.Windows.MainWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:windows="clr-namespace:bayoen.story.Windows"
+        
+                    Title="bayoen-story"
+                    
+                    AllowDrop="True"
+                    Height="500" Width="600">
+    <Grid>
+        <TextBlock x:Name="TextOut" FontSize="20" Margin="5"/>
+    </Grid>
+</windows:BaseWindow>
